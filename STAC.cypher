@@ -1,15 +1,5 @@
 CREATE 
 // Basic information about satellite data
-(floodmasks:BASIC_INFORMATIONS {
-    name: "D4H",
-    title: "Sentinel-1 Floodmasks (Data4Human)",
-    description: "Sentinel-1 based floodmask products processed within the project Data4Human",
-    license: "CC-BY-NC-4.0",
-    platform: "Sentinel-1",
-    sensor_type: "RADAR",
-    spatial_extent: [-33.0826, -13.3956, -24.9789, 40.9334],
-    temporal_extent_start: "2020-01-08T16:22:00Z"
-}),
 (S2_L3A_WASP:BASIC_INFORMATIONS {
     name: "S2_L3A_WASP",
     title: "Sentinel-2 L3A Monthly WASP Products",
@@ -47,11 +37,13 @@ CREATE
 (dlr_technology_institute:PROVIDER {name: "DLR/EOC Remote Sensing Technology Institute, Photogrammetry and Image Analysis"}),
 (dlr_geo_risks:PROVIDER {name: "DLR/EOC Geo-Risks and Civil Security"}),
 
+//create the tile node 
+(SENTINEL2A_20191116-103704-633_L2A_T32UMA_C_V1-2:TILES {name: "SENTINEL2A_20191116-103704-633_L2A_T32UMA_C_V1-2",cities:['Siegen'] ,country: "Germany"}),
+
 //Create relatinships with provider node and  data node
 (esa)-[:PROVIDES]->(S2_L3A_WASP),
 (eoc_geoservice)-[:PROVIDES]->(S2_L3A_WASP),
 (dlr_technology_institute)-[:PROVIDES]->(S2_L3A_WASP),
 (esa)-[:PROVIDES]->(S2_L2A_MAJA),
 (eoc_geoservice)-[:PROVIDES]->(S2_L2A_MAJA),
-(dlr_technology_institute)-[:PROVIDES]->(S2_L2A_MAJA),
-(dlr_geo_risks)-[:PROVIDES]->(floodmasks)
+(dlr_technology_institute)-[:PROVIDES]->(S2_L2A_MAJA)
