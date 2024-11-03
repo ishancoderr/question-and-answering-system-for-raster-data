@@ -35,10 +35,37 @@ CREATE
 (esa:PROVIDER {name: "ESA"}),
 (eoc_geoservice:PROVIDER {name: "EOC Geoservice"}),
 (dlr_technology_institute:PROVIDER {name: "DLR/EOC Remote Sensing Technology Institute, Photogrammetry and Image Analysis"}),
-(dlr_geo_risks:PROVIDER {name: "DLR/EOC Geo-Risks and Civil Security"}),
+
+// Create unique city nodes
+(CitySiegen:CITY {name: "Siegen"}),
+(CityMarburg:CITY {name: "Marburg"}),
+(CityKorbach:CITY {name: "Korbach"}),
+(CityGiesen:CITY {name: "Giesen"}),
+(CityTrier:CITY {name: "Trier"}),
+(CityDaun:CITY {name: "Daun"}),
+(CityKoblenz:CITY {name: "Koblenz"}),
+(CityIdarOberstein:CITY {name: "Idar-Oberstein"}),
+(CityFrankfurt:CITY {name: "Frankfurt"}),
+(CityDarmstadt:CITY {name: "Darmstadt"}),
+(CityWiesbaden:CITY {name: "Wiesbaden"}),
 
 //create the tile node 
-(SENTINEL2A_20191116-103704-633_L2A_T32UMA_C_V1-2:TILES {name: "SENTINEL2A_20191116-103704-633_L2A_T32UMA_C_V1-2",cities:['Siegen'] ,country: "Germany"}),
+(SENTINEL2A_20191116_103650_357:TILES {dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
+(SENTINEL2A_20191116_103708_854:TILES {dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
+(SENTINEL2A_20191116_103704_633:TILES {dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
+
+// Establish LOCATED_IN relationships
+(CitySiegen)-[:LOCATED_IN]->(SENTINEL2A_20191116_103650_357),
+(CityMarburg)-[:LOCATED_IN]->(SENTINEL2A_20191116_103650_357),
+(CityKorbach)-[:LOCATED_IN]->(SENTINEL2A_20191116_103650_357),
+(CityGiesen)-[:LOCATED_IN]->(SENTINEL2A_20191116_103650_357),
+(CityTrier)-[:LOCATED_IN]->(SENTINEL2A_20191116_103708_854),
+(CityDaun)-[:LOCATED_IN]->(SENTINEL2A_20191116_103708_854),
+(CityKoblenz)-[:LOCATED_IN]->(SENTINEL2A_20191116_103708_854),
+(CityIdarOberstein)-[:LOCATED_IN]->(SENTINEL2A_20191116_103708_854),
+(CityFrankfurt)-[:LOCATED_IN]->(SENTINEL2A_20191116_103704_633),
+(CityDarmstadt)-[:LOCATED_IN]->(SENTINEL2A_20191116_103704_633),
+(CityWiesbaden)-[:LOCATED_IN]->(SENTINEL2A_20191116_103704_633),
 
 //Create relatinships with provider node and  data node
 (esa)-[:PROVIDES]->(S2_L3A_WASP),
@@ -46,4 +73,9 @@ CREATE
 (dlr_technology_institute)-[:PROVIDES]->(S2_L3A_WASP),
 (esa)-[:PROVIDES]->(S2_L2A_MAJA),
 (eoc_geoservice)-[:PROVIDES]->(S2_L2A_MAJA),
-(dlr_technology_institute)-[:PROVIDES]->(S2_L2A_MAJA)
+(dlr_technology_institute)-[:PROVIDES]->(S2_L2A_MAJA),
+
+// Establish relationships between TILES and BASIC_INFORMATIONS
+(SENTINEL2A_20191116_103650_357)-[:HAS_INFORMATION]->(S2_L2A_MAJA),
+(SENTINEL2A_20191116_103708_854)-[:HAS_INFORMATION]->(S2_L2A_MAJA),
+(SENTINEL2A_20191116_103704_633)-[:HAS_INFORMATION]->(S2_L2A_MAJA);
