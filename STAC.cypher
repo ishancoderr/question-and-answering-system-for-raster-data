@@ -50,9 +50,9 @@ CREATE
 (CityWiesbaden:CITY {name: "Wiesbaden"}),
 
 //create the tile node 
-(SENTINEL2A_20191116_103650_357:TILES {dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
-(SENTINEL2A_20191116_103708_854:TILES {dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
-(SENTINEL2A_20191116_103704_633:TILES {dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
+(SENTINEL2A_20191116_103650_357:TILES {name:'SENTINEL2A_20191116_103650_357', dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
+(SENTINEL2A_20191116_103708_854:TILES {name:'SENTINEL2A_20191116_103708_854',dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
+(SENTINEL2A_20191116_103704_633:TILES {name:'SENTINEL2A_20191116_103704_633',dataset_name: "S2_L2A_MAJA", country: "Germany", downloadLink:'https://download.geoservice.dlr.de/S2_L2A_MAJA/'}),
 
 // Establish LOCATED_IN relationships
 (CitySiegen)-[:LOCATED_IN]->(SENTINEL2A_20191116_103650_357),
